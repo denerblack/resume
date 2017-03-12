@@ -29,9 +29,11 @@ case "$1" in
       rm -f $PUMA_SOCKET
       if [ -e $PUMA_CONFIG_FILE ] ; then
         source ~/.profile
+        rvm gemset use global
         bundle exec puma -C $PUMA_CONFIG_FILE
       else
         source ~/.profile
+        rvm gemset use global
         bundle exec puma
       fi
 
