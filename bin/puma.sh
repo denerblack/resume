@@ -31,6 +31,7 @@ case "$1" in
         source ~/.profile
         bundle exec puma -C $PUMA_CONFIG_FILE
       else
+        source ~/.profile
         bundle exec puma
       fi
 
