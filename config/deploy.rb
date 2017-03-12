@@ -57,8 +57,9 @@ task :deploy do
 
     on :launch do
       in_path(fetch(:current_path)) do
-        command %{mkdir -p tmp/}
-        command %{touch tmp/restart.txt}
+        invoke 'puma:restart'
+#        command %{mkdir -p tmp/}
+#        command %{touch tmp/restart.txt}
       end
     end
   end
