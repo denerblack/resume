@@ -28,8 +28,10 @@ case "$1" in
     echo "Starting puma..."
       rm -f $PUMA_SOCKET
       if [ -e $PUMA_CONFIG_FILE ] ; then
+        rvm use 2.3.3
         bundle exec puma -C $PUMA_CONFIG_FILE
       else
+        rvm use 2.3.3
         bundle exec puma
       fi
 
