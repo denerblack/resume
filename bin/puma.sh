@@ -67,3 +67,4 @@ case "$1" in
   *)
     echo "Usage: script/puma.sh {start|stop|restart}" >&2
     ;;
+esac
