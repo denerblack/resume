@@ -1,8 +1,8 @@
 #! /bin/sh
 
-PUMA_CONFIG_FILE=/var/www/resume/current/config/puma.rb
-PUMA_PID_FILE=/var/www/resume/shared/tmp/pids/puma.pid
-PUMA_SOCKET=/var/www/resume/shared/tmp/sockets/puma.sock
+PUMA_CONFIG_FILE=/home/denerdev.com/g/resume/current/config/puma.rb
+PUMA_PID_FILE=/home/denerdev.com/g/resume/shared/tmp/pids/puma.pid
+PUMA_SOCKET=/home/denerdev.com/g/resume/shared/tmp/sockets/puma.sock
 
 # check if puma process is running
 puma_is_running() {
@@ -28,6 +28,7 @@ case "$1" in
     echo "Starting puma..."
       rm -f $PUMA_SOCKET
       if [ -e $PUMA_CONFIG_FILE ] ; then
+        source ~/.profile
         bundle exec puma -C $PUMA_CONFIG_FILE
       else
         bundle exec puma
