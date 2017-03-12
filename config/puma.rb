@@ -16,8 +16,8 @@ environment ENV['RAILS_ENV'] || 'production'
 daemonize true
 
 pidfile "/var/www/resume/shared/tmp/pids/puma.pid"
-stdout_redirect "/var/www/resume/esdb.cn/shared/tmp/log/stdout", "/home/ubuntu/apps/esdb.cn/shared/tmp/log/stderr"
+stdout_redirect "/var/www/resume/shared/tmp/log/stdout", "/home/ubuntu/apps/esdb.cn/shared/tmp/log/stderr"
 
 threads 0, 16
 
-bind "unix:///var/www/resume/esdb.cn/shared/tmp/sockets/puma.sock"
+bind "unix:///var/www/resume/shared/tmp/sockets/puma.sock"

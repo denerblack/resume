@@ -14,6 +14,7 @@ set :domain, 'denerdev.com'
 set :deploy_to, '/var/www/resume'
 set :repository, 'https://github.com/denerblack/resume.git'#'git://...'
 set :branch, 'master'
+set :stage, 'production'
 
 # Optional settings:
    set :user, 'admin'          # Username in the server to SSH to.
@@ -57,15 +58,36 @@ task :deploy do
 
     on :launch do
       in_path(fetch(:current_path)) do
-        invoke 'puma:restart'
-#        command %{mkdir -p tmp/}
-#        command %{touch tmp/restart.txt}
+        invoke :'puma:restart'
+        #command %{mkdir -p tmp/}
+        #command %{touch tmp/restart.txt}
       end
     end
   end
 
   # you can use `run :local` to run tasks on local machine before of after the deploy scripts
   # run(:local){ say 'done' }
+end
+
+namespace :puma do
+  current_path = fetch(:current_path)
+  desc "Start the application"
+  task :start do
+    command 'echo "-----> Start Puma"'
+    command "cd #{current_path} && RAILS_ENV=#{stage} && bin/puma.sh start", :pty => false
+  end
+
+  desc "Stop the application"
+  task :stop do
+    command 'echo "-----> Stop Puma"'
+    command "cd #{current_path} && RAILS_ENV=#{stage} && bin/puma.sh stop"
+  end
+
+  desc "Restart the application"
+  task :restart do #, :roles => :app, :except => { :no_release => true } do
+    command 'echo "-----> Restart Puma"'
+    command "cd #{current_path} && RAILS_ENV=#{fetch(:stage)} && bin/puma.sh restart"
+  end
 end
 
 # For help in making your deploy script, see the Mina documentation:
