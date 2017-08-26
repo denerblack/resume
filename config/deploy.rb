@@ -10,14 +10,14 @@ require 'mina/rvm'    # for rvm support. (https://rvm.io)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'resume'
-set :domain, 'denerdev.com'
-set :deploy_to, '/home/denerdev.com/deploy/resume'
+set :domain, '54.207.111.9'
+set :deploy_to, '/home/deploy/apps/resume'
 set :repository, 'https://github.com/denerblack/resume.git'#'git://...'
 set :branch, 'master'
 set :stage, 'production'
 
 # Optional settings:
-set :user, 'denerdev.com'          # Username in the server to SSH to.
+set :user, 'deploy'          # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.
 #   set :forward_agent, true     # SSH forward_agent.
 

@@ -15,9 +15,9 @@ environment ENV['RAILS_ENV'] || 'production'
 
 daemonize true
 
-pidfile "/home/denerdev.com/deploy/resume/shared/tmp/pids/puma.pid"
-stdout_redirect "/home/denerdev.com/deploy/resume/shared/tmp/log/stdout", "/home/denerdev.com/deploy/resume/shared/tmp/log/stderr"
+pidfile "/home/deploy/apps/resume/shared/tmp/pids/puma.pid"
+stdout_redirect "/home/deploy/apps/resume/shared/tmp/log/stdout", "/home/deploy/apps/resume/shared/tmp/log/stderr"
 
 threads 0, 16
 
-bind "unix:///home/denerdev.com/deploy/resume/shared/tmp/sockets/puma.sock"
+bind "unix:///home/deploy/apps/resume/shared/tmp/sockets/puma.sock"
