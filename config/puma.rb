@@ -12,7 +12,7 @@ plugin :tmp_restart
 
 
 environment ENV['RAILS_ENV'] || 'production'
-
+=begin
 daemonize true
 
 pidfile "/home/deploy/apps/resume/shared/tmp/pids/puma.pid"
@@ -21,3 +21,18 @@ stdout_redirect "/home/deploy/apps/resume/shared/tmp/log/stdout", "/home/deploy/
 threads 0, 16
 
 bind "unix:///home/deploy/apps/resume/shared/tmp/sockets/puma.sock"
+=end
+
+bind  "unix:///home/deploy/apps/resume/shared/tmp/sockets/puma.sock"
+pidfile "/home/deploy/apps/resume/shared/tmp/pids/puma.pid"
+state_path "/home/deploy/apps/resume/shared/tmp/sockets/puma.state"
+directory "/home/deploy/apps/resume/current"
+
+workers 2
+threads 1,2
+
+daemonize true
+
+activate_control_app 'unix:///home/deploy/apps/resume/shared/tmp/sockets/pumactl.sock'
+
+prune_bundler
