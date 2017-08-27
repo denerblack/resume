@@ -1,8 +1,8 @@
 #! /bin/sh
 
-PUMA_CONFIG_FILE=/home/denerdev.com/deploy/resume/current/config/puma.rb
-PUMA_PID_FILE=/home/denerdev.com/deploy/resume/shared/tmp/pids/puma.pid
-PUMA_SOCKET=/home/denerdev.com/deploy/resume/shared/tmp/sockets/puma.sock
+PUMA_CONFIG_FILE=/home/deploy/apps/resume/current/config/puma.rb
+PUMA_PID_FILE=/home/deploy/apps/resume/shared/tmp/pids/puma.pid
+PUMA_SOCKET=/home/deploy/apps/resume/shared/tmp/sockets/puma.sock
 
 # check if puma process is running
 puma_is_running() {
