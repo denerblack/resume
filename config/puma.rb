@@ -26,6 +26,7 @@ bind "unix:///home/deploy/apps/resume/shared/tmp/sockets/puma.sock"
 bind  "unix:///home/deploy/apps/resume/shared/tmp/sockets/puma.sock"
 pidfile "/home/deploy/apps/resume/shared/tmp/pids/puma.pid"
 state_path "/home/deploy/apps/resume/shared/tmp/sockets/puma.state"
+stdout_redirect "/home/deploy/apps/resume/shared/tmp/log/stdout", "/home/deploy/apps/resume/shared/tmp/log/stderr"
 directory "/home/deploy/apps/resume/current"
 
 workers 2
