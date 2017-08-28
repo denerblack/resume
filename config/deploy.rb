@@ -23,7 +23,7 @@ set :user, 'deploy'          # Username in the server to SSH to.
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
 # set :shared_dirs, fetch(:shared_dirs, []).push('somedir')
-   set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'tmp/sockets', 'tmp/sockets/puma.sock')
+   set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml', 'tmp/sockets', 'tmp/sockets/puma.sock', 'tmp/pids', 'tmp/pids/puma.pid')
 
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
@@ -56,6 +56,12 @@ task :deploy do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
+
+    on :launch do
+      invoke :'puma:phased_restart'
+    end
+
+=begin
     on :launch do
       in_path(fetch(:current_path)) do
         invoke :'puma:restart'
@@ -63,12 +69,13 @@ task :deploy do
         #command %{touch tmp/restart.txt}
       end
     end
+=end
   end
 
   # you can use `run :local` to run tasks on local machine before of after the deploy scripts
   # run(:local){ say 'done' }
 end
-
+=begin
 namespace :puma do
   current_path = fetch(:current_path)
   desc "Start the application"
@@ -89,7 +96,7 @@ namespace :puma do
     command "cd #{current_path} && RAILS_ENV=#{fetch(:stage)} && bin/puma.sh restart"
   end
 end
-
+=end
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - https://github.com/mina-deploy/mina/tree/master/docs

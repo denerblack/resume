@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/untitledkingdom/mina-puma.git
+  revision: fa249a11dc83973b4d0824c61419f94817eeac01
+  specs:
+    mina-puma (1.0.1)
+      mina (~> 1.0.0)
+      puma (>= 2.13)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -183,6 +191,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   mina
+  mina-puma!
   puma (~> 3.0)
   rails (~> 5.0.1)
   rails-assets-flexslider!
@@ -202,4 +211,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.13.6
+   1.14.6
