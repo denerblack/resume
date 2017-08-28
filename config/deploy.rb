@@ -24,7 +24,7 @@ set :user, 'deploy'          # Username in the server to SSH to.
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
 # set :shared_dirs, fetch(:shared_dirs, []).push('somedir')
- set :shared_dirs, fetch(:shared_dirs, []).push('tmp/socket', 'tmp/pids')
+ set :shared_dirs, fetch(:shared_dirs, []).push('tmp/socket', 'tmp/pids', 'tmp/log')
    set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')#, 'tmp/sockets', 'tmp/sockets/puma.sock', 'tmp/pids')
 
 # This task is the environment that is loaded for all remote run commands, such as
