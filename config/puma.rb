@@ -11,7 +11,7 @@ plugin :tmp_restart
 #!/usr/bin/env puma
 
 
-environment ENV['RAILS_ENV'] || 'production'
+if environment ENV['RAILS_ENV'] == 'production'
 =begin
 daemonize true
 
@@ -23,18 +23,19 @@ threads 0, 16
 bind "unix:///home/deploy/apps/resume/shared/tmp/sockets/puma.sock"
 =end
 
-bind  "unix:///home/deploy/apps/resume/shared/tmp/sockets/puma.sock"
-pidfile "/home/deploy/apps/resume/shared/tmp/pids/puma.pid"
-state_path "/home/deploy/apps/resume/shared/tmp/sockets/puma.state"
-stdout_redirect "/home/deploy/apps/resume/shared/tmp/log/stdout", "/home/deploy/apps/resume/shared/tmp/log/stderr"
-stdout_redirect "/home/deploy/apps/resume/shared/tmp/log/stdout", "/home/deploy/apps/resume/shared/tmp/log/stderr", true
-directory "/home/deploy/apps/resume/current"
+  bind  "unix:///home/deploy/apps/resume/shared/tmp/sockets/puma.sock"
+  pidfile "/home/deploy/apps/resume/shared/tmp/pids/puma.pid"
+  state_path "/home/deploy/apps/resume/shared/tmp/sockets/puma.state"
+  stdout_redirect "/home/deploy/apps/resume/shared/tmp/log/stdout", "/home/deploy/apps/resume/shared/tmp/log/stderr"
+  stdout_redirect "/home/deploy/apps/resume/shared/tmp/log/stdout", "/home/deploy/apps/resume/shared/tmp/log/stderr", true
+  directory "/home/deploy/apps/resume/current"
 
-workers 2
-threads 1,2
+  workers 2
+  threads 1,2
 
-daemonize true
+  daemonize true
 
-activate_control_app 'unix:///home/deploy/apps/resume/shared/tmp/sockets/pumactl.sock'
+  activate_control_app 'unix:///home/deploy/apps/resume/shared/tmp/sockets/pumactl.sock'
 
-prune_bundler
+  prune_bundler
+end
