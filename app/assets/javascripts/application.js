@@ -15,8 +15,8 @@
 //= require flexslider
 //= require magnific-popup
 //= require waypoints
+//= require init
 //= require jquery-migrate
 //= require jquery-fittext
-//= require init
 //= require turbolinks
 //= require_tree .
