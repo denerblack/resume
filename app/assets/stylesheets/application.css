@@ -15,6 +15,7 @@
  *= require 'magnific-popup.css'
  *= require 'default'
  *= require 'layout'
+ *= require 'fonts'
  *= require 'media-queries'
  *= require_tree .
  *= require_self
