@@ -81,6 +81,7 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
