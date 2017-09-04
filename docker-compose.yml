@@ -1,13 +1,26 @@
 version: '2'
 services:
-  db:
+  mongodb:
     image: mongo
-  web:
+    ports:
+      - "27018:27017"
+
+  resume:
+    container_name: resume
+    #image: 119212825625.dkr.ecr.us-east-1.amazonaws.com/resume
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - .:/resume
+      - .:/usr/src/resume
+      - bundle-data:/usr/src/bundle
     ports:
       - "3000:3000"
+    links:
+      - mongodb
     depends_on:
-      - db
+      - mongodb
+volumes:
+  bundle:
+    driver: local
+  bundle-data:
+    driver: local
