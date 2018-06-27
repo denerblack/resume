@@ -1,6 +1,6 @@
 require_relative 'boot'
 
-#require 'rails/all'
+require 'rails/all'
 #require 'mongoid'
 require "action_controller/railtie"
 require "action_mailer/railtie"

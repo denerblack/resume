@@ -11,7 +11,8 @@ require 'mina/puma'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'resume'
-set :domain, '54.207.111.9'
+#set :domain, 'denerdev.com'
+set :domain, '209.97.137.27'
 set :deploy_to, '/home/deploy/apps/resume'
 set :repository, 'https://github.com/denerblack/resume.git'#'git://...'
 set :branch, 'master'
